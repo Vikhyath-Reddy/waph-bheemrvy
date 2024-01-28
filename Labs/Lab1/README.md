@@ -12,10 +12,10 @@ Figure 1: Vikhyath’s headshot
 
 Repository Information
 
-Respository’s URL: https://github.com/Sai-Divakar-Reddy-Gali/waph- galisy.git
+Respository’s URL: https://github.com/Vikhyath-Reddy/waph-bheemrvy
 
 This is a private repository for Divakar to store all code from the course. The organization of this
-repository is as follows.
+repository is as follows.s
 
 
 The lab’s overview
@@ -24,8 +24,7 @@ The lab’s overview
 In Lab 1, we will go over the HTTP protocol and how to program web applications. The first section, Part I, walks us through the complexities of HTTP traffic analysis with Wireshark and hands-on contact with HTTP servers via Telnet. The primary goal is to understand the HTTP protocol's core components, methods, and replies. Moving on to Part II, we'll look at web application programming and the Common Gateway Interface. Here, we construct a simple web application in C that handles user input. The lab also covers web application programming using PHP, giving light on the differences between HTTP GET and POST requests, as well as the security implications. This comprehensive lab experience is intended to provide a practical grasp
 of HTTP, CGI, and the principles of web application development.
 
-Here is the link to the Github repository https://github.com/Sai-Divakar- Reddy-Gali/waph-
-galisy/tree/main/labs/lab1.
+Here is the link to the Github repository https://github.com/Vikhyath-Reddy/waph-bheemrvy/tree/main/labs/Lab1.
 
 
 Part I - The WEB and HTTP Protocol
@@ -124,7 +123,7 @@ Figure 13: Echo_PHP_Wireshark_Response
 2. curl
 create an HTTP Post Request
 
-![curl](imaages/fig15.jpg)
+![curl](images/fig15.jpg)
 
 Figure 15: curl_POST_request HTTP stream in Wireshark
 
@@ -133,6 +132,6 @@ request body.
 
 GET queries are cacheable, enabling URL bookmarking, but POST answers are rarely cached.Both answers include an HTTP status code that indicates the outcome; however, GET responses frequently offer requested material, whereas POST responses may serve as confirmations or contain changeable information. Understanding these characteristics is critical for creating good online apps.
 
-![curlhttp](images/fig16.jpg)
+![curlhttp](images/fig16.jpg)s
 
 Figure 16: curl_HTTP_stream_in_Wireshark
