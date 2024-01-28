@@ -81,7 +81,7 @@ Figure 9: Index.c_CGI_Program
 
 Included file index.c: 
 c 
-
+```
 #include <stdio.h> int main(void){
 printf("Content-Type: text/html; charset=utf-8\n\n"); 
 printf("<html>\n");
@@ -91,7 +91,7 @@ printf("<h1>Lab1</h1>\n");
 printf("<p>The lab1 consists of two parts in part 1 HTTP protocols are covered and in part 2 basic web programming is covered</p>\n"); 
 printf("</body>\n");
 printf("</html>\n"); return 0; }
-
+```
 
 Task 2 - A simple PHP Web Application with user input.
 1. Create a PHP script with the content "helloworld" and save it as a ".php" extension. Transfer the PHP script to the web server's page root directory, which is normally located at /var/www/html.Launch a web browser and navigate to the PHP script using the server's URL, such as http://localhost/helloworld.php. When you visit this URL, the server will execute the PHP script,and the browser will render and show the results.
