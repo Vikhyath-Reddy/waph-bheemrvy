@@ -28,29 +28,29 @@ A robust tool for comprehensive HTTP protocol analysis that gives you a deep und
 
 ![request](images/fig2.jpg)
 
-Fig 2: example.com_Request
+Fig 2
 
 ![response](images/fig3.jpg)
 
-Fig 3: example.com_Response
+Fig 3
 
 ![httpstream](images/fig4.jpg)
 
-Fig 4: example.com_HTTP_Stream
+Fig 4
 
-Task 2 - Understanding HTTP using telnet and Wireshark
+Task 2 
 
-To send a basic HTTP request using the telnet software, open a terminal window and connect to the designated server on port 80. After the connection has been made, manually construct a simple HTTP request by providing the required information, such as the resource path, HTTP version, and HTTP method (such as GET). Lastly, to send the request, press the "Enter" key twice. Launch a capture on the relevant network interface in order to use Wireshark to analyze the intricacies of HTTP traffic. Apply a "http" display filter to focus only on HTTP traffic. Next, the details of the submitted HTTP request, including headers and data for additional examination, will be plainly visible in the Wireshark output.
+After the connection has been made, manually construct a simple HTTP request by providing the required information, such as the resource path, HTTP version, and HTTP method (such as GET). Apply a "http" display filter to focus only on HTTP traffic. Next, the details of the submitted HTTP request, including headers and data for additional examination, will be plainly visible in the Wireshark output.
 
 ![telnet](images/fig5.jpg)
 
-Fig 5: Sending_Request_by_using_Telnet_in_terminal
+Fig 5
 
 Part II 
 
 Task 1 
 
-The first step in writing a Hello World CGI application in C is to create a file called "helloworld.c" that contains the required CGI headers. Prior to including the HTML text, include the HTTP text-Type header in this file. The C program should then be built using a C compiler, such as GCC, to produce an executable file named "helloworld.cgi." After compilation, place the executable in the "/usr/lib/cgi-bin/" CGI directory on the web server. Set the CGI directory in the web server's settings to permit CGI execution. Open a web browser and go to the appropriate URL (http://localhost/cgi-bin/helloworld.cgi, for instance). The CGI application will be run by the web server, and the generated output will be shown in the browser. This streamlined method shows you how to install and compile a fundamental CGI program in
+The first step in writing a Hello World CGI application in C is to create a file called "helloworld.c" that contains the required CGI headers. Prior to including the HTML text, include the HTTP text-Type header in this file. The CGI application will be run by the web server, and the generated output will be shown in the browser. This streamlined method shows you how to install and compile a fundamental CGI program in
 
 ![telnetrequestwireshark](images/fig6.jpg)
 
@@ -80,7 +80,6 @@ Make an application by creating a "echo.php" script. To run the PHP script, navi
 
 File echo.php is included: PHP $_REQUEST["data"]; <?php echo?>
 Risks to Security:
-• User input entered into the "data" parameter without proper validation or sanitization leaves it open to XSS (Cross-Site Scripting) attacks. In these situations, there is a significant security risk since attackers could introduce dangerous scripts that launch when other users visit the page.
 • Data can originate from a number of sources when $_REQUEST is used, including user input through URL parameters. However, this approach leaves room for data tampering if the input lacks sufficient validation or sanitization procedures. This highlights how important it is to have robust security measures in place to lessen the possibility of unauthorized data alteration.
 ![helloworldphp](images/fig10.jpg)
 Figure 10: Hello_world_PHP_program
@@ -105,10 +104,9 @@ create an HTTP Post Request
 
 Fig 15: curl
 
-HTTP GET and POST requests are communication techniques between clients and servers that share characteristics such as using the HTTP protocol, including headers, including specifying a Request URI. However, their differences lay in data submission: GET appends data to the URL,which is visible in the address bar, whereas POST transmits data within the request body, providing more protection for sensitive information. Notably, GET has a URL length-based size restriction,making it appropriate for less data, but POST excels at handling bigger quantities supplied in the
-request body.
+Within the HTTP protocol, GET and POST requests are used as a means of communication between clients and servers. Both include a Request URI and need headers. POST transfers data within the request body, providing greater security for sensitive information, whereas GET adds data to the URL, which is displayed in the address bar. Because of limitations on URL length, GET is best suited for smaller amounts of data, while POST performs better when the request body is longer.
 
-GET queries are cacheable, enabling URL bookmarking, but POST answers are rarely cached.Both answers include an HTTP status code that indicates the outcome; however, GET responses frequently offer requested material, whereas POST responses may serve as confirmations or contain changeable information. Understanding these characteristics is critical for creating good online apps.
+Caching of URLs is possible for GET queries, however POST answers are not frequently cached. Each answer has an HTTP status code, and while POST responses can provide varying information or act as confirmations, GET responses frequently contain the requested content. It is essential to comprehend these differences in order to design web applications effectively.
 
 ![curlhttp](images/fig16.jpg)s
 
