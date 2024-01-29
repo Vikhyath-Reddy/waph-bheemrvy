@@ -8,115 +8,93 @@ Email: bheemrvy@mail.uc.edu
 
 ![headshot](images/fig1.jpg)
 
-Figure 1: Vikhyath’s headshot
-
-Repository Information
+Fig 1: Vikhyath’s photo
 
 Respository’s URL: https://github.com/Vikhyath-Reddy/waph-bheemrvy
 
-This is a private repository for Divakar to store all code from the course. The organization of this
-repository is as follows.s
-
-
 The lab’s overview
 
-
-In Lab 1, we will go over the HTTP protocol and how to program web applications. The first section, Part I, walks us through the complexities of HTTP traffic analysis with Wireshark and hands-on contact with HTTP servers via Telnet. The primary goal is to understand the HTTP protocol's core components, methods, and replies. Moving on to Part II, we'll look at web application programming and the Common Gateway Interface. Here, we construct a simple web application in C that handles user input. The lab also covers web application programming using PHP, giving light on the differences between HTTP GET and POST requests, as well as the security implications. This comprehensive lab experience is intended to provide a practical grasp
-of HTTP, CGI, and the principles of web application development.
+The HTTP protocol and web application programming will be covered in Lab 1. Using Wireshark to analyze HTTP traffic and Telnet to establish direct communication with HTTP servers, the first segment, Part I, takes us through the intricacies of these tasks. Comprehending the fundamental elements, techniques, and responses of the HTTP protocol is the main aim.We'll examine web application programming using the Common Gateway Interface in Part II. Here, we build a basic C web application that accepts user input. The lab also covers PHP web application programming, shedding light on the security concerns and the distinctions between HTTP GET and POST requests. The goal of this extensive lab experience is to teach you a realistic understanding of web application development concepts, CGI, and HTTP.
 
 Here is the link to the Github repository https://github.com/Vikhyath-Reddy/waph-bheemrvy/tree/main/labs/Lab1.
 
 
-Part I - The WEB and HTTP Protocol
+Part I
 
-Task 1 - Familiar with the Wireshark tool and HTTP protocol
+Task 1
 
-Wireshark is a powerful tool for in-depth HTTP protocol analysis, providing a thorough knowledge of client-server interactions. To fully utilize Wireshark, begin by selecting the appropriate network interface that will handle the anticipated HTTP traffic. After starting the capture, go to the display filter and type "http" to narrow the emphasis to HTTP-related packets.Examine the collected packets to untangle the complexities of the request-response cycle, paying close attention to headers, methods, and content to gain a complete understanding of the communication dynamics.
+A robust tool for comprehensive HTTP protocol analysis that gives you a deep understanding of client-server interactions is Wireshark. To get the most of Wireshark, start by choosing the network interface that is going to handle the expected amount of HTTP traffic. Once the capture has begun, select the displayed filter and enter "http" to focus only on packets pertaining to HTTP.Take a detailed look at the headers, methods, and content of the gathered packets in order to fully comprehend the communication dynamics and unravel the intricacies of the request-response cycle.
+
 
 ![request](images/fig2.jpg)
 
-Figure 2: example.com_Request
+Fig 2: example.com_Request
 
 ![response](images/fig3.jpg)
 
-Figure 3: example.com_Response
+Fig 3: example.com_Response
 
 ![httpstream](images/fig4.jpg)
 
-Figure 4: example.com_HTTP_Stream
+Fig 4: example.com_HTTP_Stream
 
 Task 2 - Understanding HTTP using telnet and Wireshark
 
-Using the telnet software to send a simple HTTP request entails starting a terminal connection and connecting to the specified server on port 80. Once the connection has been established, manually create a basic HTTP request by giving necessary components such as the HTTP method (e.g.,GET), the resource path, and the HTTP version. Finally, hit the "Enter" key twice to send the request. To examine the complexities of HTTP communications using Wireshark, start a capture on the appropriate network interface. Use a display filter for "http" to narrow the focus on HTTP traffic. The Wireshark output will then clearly display the details of the sent HTTP request, including headers and data for further inspection.
+To send a basic HTTP request using the telnet software, open a terminal window and connect to the designated server on port 80. After the connection has been made, manually construct a simple HTTP request by providing the required information, such as the resource path, HTTP version, and HTTP method (such as GET). Lastly, to send the request, press the "Enter" key twice. Launch a capture on the relevant network interface in order to use Wireshark to analyze the intricacies of HTTP traffic. Apply a "http" display filter to focus only on HTTP traffic. Next, the details of the submitted HTTP request, including headers and data for additional examination, will be plainly visible in the Wireshark output.
 
 ![telnet](images/fig5.jpg)
 
-Figure 5: Sending_Request_by_using_Telnet_in_terminal
+Fig 5: Sending_Request_by_using_Telnet_in_terminal
 
-Part II - Basic Application Programming
+Part II 
 
-Task 1 - CGI Web applications in C
+Task 1 
 
-To develop a Hello World CGI application in C, first create a C source code file named "helloworld.c" that includes the necessary CGI headers. Include the HTTP Content-Type header in this file first, then the HTML content. Next, use a C compiler, such as GCC, to build the C program and create an executable file called "helloworld.cgi." Once compiled, move the executable to the web server's CGI directory ("/usr/lib/cgi-bin/"). To allow CGI execution, set the CGI directory in the web server's settings. Use a web browser to navigate to the relevant URL (for
-example, http://localhost/cgi-bin/helloworld.cgi). The web server will execute the CGI application, and the browser will show the produced output. This simplified approach demonstrates how to compile and install a basic CGI application in C on a web server, allowing for dynamic content production.
+The first step in writing a Hello World CGI application in C is to create a file called "helloworld.c" that contains the required CGI headers. Prior to including the HTML text, include the HTTP text-Type header in this file. The C program should then be built using a C compiler, such as GCC, to produce an executable file named "helloworld.cgi." After compilation, place the executable in the "/usr/lib/cgi-bin/" CGI directory on the web server. Set the CGI directory in the web server's settings to permit CGI execution. Open a web browser and go to the appropriate URL (http://localhost/cgi-bin/helloworld.cgi, for instance). The CGI application will be run by the web server, and the generated output will be shown in the browser. This streamlined method shows you how to install and compile a fundamental CGI program in
 
 ![telnetrequestwireshark](images/fig6.jpg)
 
-Figure 6: Telnet_Request_in_Wireshark
+Fig 6: Telnet_Request_in_Wireshark
 
 ![telnetresponse](images/fig7.jpg)
 
-Figure 7: Telnet_Response_in_Wireshark
+Fig 7: Telnet_Response_in_Wireshark
 
 ![helloworldcgi](images/fig8.jpg)
 
-Figure 8: Helloworld.c_CGI_Program
+Fig 8: Helloworld.c_CGI_Program
 
-1. Created a "index.c" file to demonstrate competency in building C CGI applications,following a simple HTML template with proper title, header, and paragraph components.
+1. To show that they were proficient in creating CGI applications, they created a "index.c" file by adhering to a basic HTML design that had the appropriate header, title, and paragraph elements.
 
 ![indexcgi](images/fig9.jpg)
 
-Figure 9: Index.c_CGI_Program
+Fig 9: Index.c_CGI_Program
 
 
-Included file index.c: 
-c 
-```
-#include <stdio.h> int main(void){
-printf("Content-Type: text/html; charset=utf-8\n\n"); 
-printf("<html>\n");
-printf("<head><title>WAPH</title></head>\n"); 
-printf("<body>\n");
-printf("<h1>Lab1</h1>\n"); 
-printf("<p>The lab1 consists of two parts in part 1 HTTP protocols are covered and in part 2 basic web programming is covered</p>\n"); 
-printf("</body>\n");
-printf("</html>\n"); return 0; }
-```
-
-Task 2 - A simple PHP Web Application with user input.
-1. Create a PHP script with the content "helloworld" and save it as a ".php" extension. Transfer the PHP script to the web server's page root directory, which is normally located at /var/www/html.Launch a web browser and navigate to the PHP script using the server's URL, such as http://localhost/helloworld.php. When you visit this URL, the server will execute the PHP script,and the browser will render and show the results.
+Task 2 
+1. Make a "helloworld" PHP script and save it with the ".php" suffix. Move the PHP script to the page root directory of the web server, typically found at /var/www/html.Open a web browser and use the server's URL, such as http://localhost/helloworld.php, to access the PHP script. The PHP script will be run by the server when you access this URL, and the results will be rendered and shown by the browser.
 
 2) For the "echo.php" application:
 
-Create a "echo.php" script to function as an application. Navigate to the relevant URL on the web server to execute the PHP script. The script will process the request, and the browser will display the output from the "echo.php" application.
+Make an application by creating a "echo.php" script. To run the PHP script, navigate to the appropriate URL on the web server. The browser will show the output from the "echo.php" application after the script processes the request.
 
-Included file echo.php: php <?php echo $_REQUEST["data"]; ?>
-Security Risks:
-• When the "data" argument is filled in with user input without sufficient validation or sanitization,it becomes vulnerable to XSS (Cross-Site Scripting) attacks. In such circumstances, attackers may insert malicious scripts that run when other people access the website, providing a huge security risk.
-• The usage of $_REQUEST enables data to come from a variety of sources, including user input       via URL parameters. However, if the input does not include adequate validation or sanitization mechanisms, this strategy opens the door to data manipulation. This emphasizes the significance of having strong security measures to reduce the danger of unwanted data tampering.
+File echo.php is included: PHP $_REQUEST["data"]; <?php echo?>
+Risks to Security:
+• User input entered into the "data" parameter without proper validation or sanitization leaves it open to XSS (Cross-Site Scripting) attacks. In these situations, there is a significant security risk since attackers could introduce dangerous scripts that launch when other users visit the page.
+• Data can originate from a number of sources when $_REQUEST is used, including user input through URL parameters. However, this approach leaves room for data tampering if the input lacks sufficient validation or sanitization procedures. This highlights how important it is to have robust security measures in place to lessen the possibility of unauthorized data alteration.
 ![helloworldphp](images/fig10.jpg)
 Figure 10: Hello_world_PHP_program
 ![echo.php](images/fig11.jpg)
 Figure 11: Echo_PHP_Program
-Task 3 - Understanding HTTP GET and POST requests.
-1. Start by selecting the network interface through which the HTTP traffic is expected in my case I selected any to capture the HTTP traffic. Open the web browser and navigate to the PHP script using the server’s URL http://localhost/echo.php?data=Hi%20this%20is%20vikhyath%20reddy%20Bheemreddy%20PHP%20echo.php%20file Once the capture is initiated, navigate to the display filter and enter “http” to filter out HTTP-related packets. The below images demonstrates the Request and Response of the echo.php script
+Task 3 
+1. First, choose the network interface that is anticipated to carry HTTP traffic. In my instance, I chose any to record the HTTP traffic. Launch the web browser and use the server's URL, http://localhost/echo.php?data=Hello, this is vikhyath Reddy from Bheem Reddy PHP%20echo.php%20file, to access the PHP script. After starting the capture, select the display filter and type "http" to exclude packets pertaining to HTTP. The images below show the echo.php script's request and response.
 
 ![wireshark](images/fig12.jpg)
-Figure 12: Echo_PHP_Wireshark_Request
+Fig 12: Echo_PHP_Wireshark_Request
 
 ![wireshark](images/fig13.jpg)
 
-Figure 13: Echo_PHP_Wireshark_Response
+Fig 13: Echo_PHP_Wireshark_Response
 
 ![echo output](images/fig14.jpg)
 
@@ -125,7 +103,7 @@ create an HTTP Post Request
 
 ![curl](images/fig15.jpg)
 
-Figure 15: curl_POST_request HTTP stream in Wireshark
+Fig 15: curl
 
 HTTP GET and POST requests are communication techniques between clients and servers that share characteristics such as using the HTTP protocol, including headers, including specifying a Request URI. However, their differences lay in data submission: GET appends data to the URL,which is visible in the address bar, whereas POST transmits data within the request body, providing more protection for sensitive information. Notably, GET has a URL length-based size restriction,making it appropriate for less data, but POST excels at handling bigger quantities supplied in the
 request body.
@@ -134,4 +112,4 @@ GET queries are cacheable, enabling URL bookmarking, but POST answers are rarely
 
 ![curlhttp](images/fig16.jpg)s
 
-Figure 16: curl_HTTP_stream_in_Wireshark
+Fig 16: curl_HTTP_stream_in_Wireshark
