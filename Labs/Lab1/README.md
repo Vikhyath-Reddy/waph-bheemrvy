@@ -16,14 +16,14 @@ The lab’s overview
 
 The HTTP protocol and web application programming will be covered in Lab 1. Using Wireshark to analyze HTTP traffic and Telnet to establish direct communication with HTTP servers, the first segment, Part I, takes us through the intricacies of these tasks. Comprehending the fundamental elements, techniques, and responses of the HTTP protocol is the main aim.We'll examine web application programming using the Common Gateway Interface in Part II. Here, we build a basic C web application that accepts user input. The lab also covers PHP web application programming, shedding light on the security concerns and the distinctions between HTTP GET and POST requests. The goal of this extensive lab experience is to teach you a realistic understanding of web application development concepts, CGI, and HTTP.
 
-Here is the link to the Github repository https://github.com/Vikhyath-Reddy/waph-bheemrvy/tree/main/labs/Lab1.
+Github repository: https://github.com/Vikhyath-Reddy/waph-bheemrvy/tree/main/labs/Lab1.
 
 
 Part I
 
 Task 1
 
-A robust tool for comprehensive HTTP protocol analysis that gives you a deep understanding of client-server interactions is Wireshark. To get the most of Wireshark, start by choosing the network interface that is going to handle the expected amount of HTTP traffic. Once the capture has begun, select the displayed filter and enter "http" to focus only on packets pertaining to HTTP.Take a detailed look at the headers, methods, and content of the gathered packets in order to fully comprehend the communication dynamics and unravel the intricacies of the request-response cycle.
+A robust tool for comprehensive HTTP protocol analysis that gives you a deep understanding of client-server interactions is Wireshark. To get the most of Wireshark, start by choosing the network interface that is going to handle the expected amount of HTTP traffic. Capture has start, select the displayed filter and enter "http" to focus only on packets pertaining to HTTP.Take a detailed look at the headers, methods, and content of the gathered packets in order to fully comprehend the communication dynamics and unravel the intricacies of the request-response cycle.
 
 
 ![request](images/fig2.jpg)
@@ -40,7 +40,7 @@ Fig 4
 
 Task 2 
 
-After the connection has been made, manually construct a simple HTTP request by providing the required information, such as the resource path, HTTP version, and HTTP method (such as GET). Apply a "http" display filter to focus only on HTTP traffic. Next, the details of the submitted HTTP request, including headers and data for additional examination, will be plainly visible in the Wireshark output.
+After the connection has been made, manually construct a simple HTTP request by providing the required information, such as the resource path, HTTP version, and HTTP method (such as GET). 
 
 ![telnet](images/fig5.jpg)
 
@@ -64,7 +64,7 @@ Fig 7: Telnet_Response_in_Wireshark
 
 Fig 8: Helloworld.c_CGI_Program
 
-1. To show that they were proficient in creating CGI applications, they created a "index.c" file by adhering to a basic HTML design that had the appropriate header, title, and paragraph elements.
+1. To show that they were proficient in creating CGI applications, they created a "index.c" file by a basic HTML design that had the appropriate header, title, and paragraph elements.
 
 ![indexcgi](images/fig9.jpg)
 
@@ -72,7 +72,7 @@ Fig 9: Index.c_CGI_Program
 
 
 Task 2 
-1. Make a "helloworld" PHP script and save it with the ".php" suffix. Move the PHP script to the page root directory of the web server, typically found at /var/www/html.Open a web browser and use the server's URL, such as http://localhost/helloworld.php, to access the PHP script. The PHP script will be run by the server when you access this URL, and the results will be rendered and shown by the browser.
+1. Make a "helloworld" PHP script and save with ".php" suffix. Move the PHP script to the page root of the web server, typically found at /var/www/html.Open a web browser and use the server's URL, such as http://localhost/helloworld.php, to access the PHP script. The PHP script will be run by the server when you access this URL, and the results will be rendered and shown by the browser.
 
 2) For the "echo.php" application:
 
@@ -86,7 +86,7 @@ Figure 10: Hello_world_PHP_program
 ![echo.php](images/fig11.jpg)
 Figure 11: Echo_PHP_Program
 Task 3 
-1. First, choose the network interface that is anticipated to carry HTTP traffic. In my instance, I chose any to record the HTTP traffic. Launch the web browser and use the server's URL, http://localhost/echo.php?data=Hello, this is vikhyath Reddy from Bheem Reddy PHP%20echo.php%20file, to access the PHP script. After starting the capture, select the display filter and type "http" to exclude packets pertaining to HTTP. The images below show the echo.php script's request and response.
+1. First, choose the network interface that is anticipated to carry HTTP traffic. Then record HTTP traffic with the url and start capturing,select the display filterand type http .
 
 ![wireshark](images/fig12.jpg)
 Fig 12: Echo_PHP_Wireshark_Request
@@ -104,7 +104,7 @@ create an HTTP Post Request
 
 Fig 15: curl
 
-Within the HTTP protocol, GET and POST requests are used as a means of communication between clients and servers. Both include a Request URI and need headers. POST transfers data within the request body, providing greater security for sensitive information, whereas GET adds data to the URL, which is displayed in the address bar. Because of limitations on URL length, GET is best suited for smaller amounts of data, while POST performs better when the request body is longer.
+Within the HTTP protocol, GET and POST requests are used as a means of communication between clients and servers. Both include a Request URI and need headers. POST transfers data within the request body, providing greater security for sensitive information, whereas GET adds info to URL, which is displayed in address bar. Because of limitations on URL length, GET is best suited for smaller amounts of data, while POST performs better when the request body is longer.
 
 Caching of URLs is possible for GET queries, however POST answers are not frequently cached. Each answer has an HTTP status code, and while POST responses can provide varying information or act as confirmations, GET responses frequently contain the requested content. It is essential to comprehend these differences in order to design web applications effectively.
 
