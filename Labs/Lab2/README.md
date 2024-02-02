@@ -8,7 +8,7 @@
 ### Email: bheemrvy@mail.uc.edu
 
 
-<img src="Images/headshot.jpg"  width="300" height="300"><p><h3> Figure 1: Vikhyath Reddy</h3></p>
+<img src="images/headshot.jpg"  width="300" height="300"><p><h3> Figure 1: Vikhyath Reddy</h3></p>
 
 ## Repository Information
 ### Repository's URL: (https://github.com/Vikhyath-Reddy/waph-bheemrvy)
