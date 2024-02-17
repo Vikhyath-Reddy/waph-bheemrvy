@@ -23,7 +23,7 @@ This Hackathon focuses on raising awareness about XSS attacks, understanding cod
 Task 1 involves attacking the URL http://waph-hackathon.eastus.cloudapp.azure.com/xss/, which contains six levels of vulnerabilities.
 Task 2 entails mitigating XSS attacks through secure coding practices, emphasizing input validation and output sanitization.
 
-Link to Hackthon1 code : [https://github.com/Vikhyath-Reddy/waph-bheemrvy/tree/main/Hackthons/Hackthons1]([https://github.com/Vikhyath-Reddy/waph-bheemrvy/tree/main/Hackthons/Hackthons1])
+Link to Hackthon1 code : [https://github.com/Vikhyath-Reddy/waph-bheemrvy/tree/main/Hackthons/Hackthons1](https://github.com/Vikhyath-Reddy/waph-bheemrvy/tree/main/Hackthons/Hackthons1)
 
 Task 1: Attacks
 
