@@ -26,7 +26,7 @@ This laboratory exercise provides an instructional outline for developing a secu
 
 The process begins with the installation of MySQL using the command `sudo apt-get install mysql-server -y`, followed by accessing MySQL with `sudo mysql -u root -p`. Subsequently, a new database is created and permissions are initiated through the `database.account.sql` command. Login credentials are then entered into a database table using MySQL, facilitating the setup of a new database account. The creation of a new table named Users is executed, with data insertion including hashed passwords. Verification of the table creation and data insertion is done with `show databases` and `SELECT * FROM users;` commands respectively. Throughout, SQL commands are utilized to define the structure of the Users table, specifying column data types and constraints. This step ensures the proper organization and security of the database, enhancing the functionality of the web application.
 
-![Database Creation ](images/Figure 1.jpg)
+![Database Creation](images/Figure1.jpg)
 
 ![Table Creation](images/Figure2.jpg)
 
