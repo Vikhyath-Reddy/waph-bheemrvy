@@ -58,7 +58,7 @@ I have loaded the sessiontest.php in the firefox for 14 times them copied the co
 
 Created a logout.php file and adding logout feature. And added changes to the index.php where auorized login can be done and unauthorized logins are alerted.
 
-[ Login Successful](images/figure11.jpg)
+![ Login Successful](images/figure11.jpg)
 
 ![ Login UnSuccessful](images/figure12.jpg)
 
@@ -94,10 +94,10 @@ Inserted the sessions security settings for session cookies. Confirming through 
 
 ![ Can't view the cookies](images/figure21.jpg)
 
-![ Enabling HTTPOnly ensures that session hijacking is prevented.](images/figure22.jpg)
+![ Enabling HTTPOnly ensures that session hijacking is prevented.](images/figure23.jpg)
 
 ### 3c: Securing Session Against Session Hijacking Attacks - Defense In-Depth
 
 Following the authentication process, browser information was stored in a session variable within the index.php file. The screenshot depicts the defense mechanism, illustrating how to detect and address session hijacking attempts.
 
-![ Host page by bheemrvy.waph.io](images/figure20.jpg)
+![ Alert Hijacking the session.](images/figure24.jpg)
