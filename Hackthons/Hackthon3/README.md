@@ -7,7 +7,7 @@
 ### Name: Bheemreddy Vikhyath Reddy
 ### Email: bheemrvy@mail.uc.edu
 
-![Vikhyath's Headshot](images/fig1.jpg)
+![Vikhyath's Headshot](Images/headshots.jpg)
 
 ## Repository Information
 ### Repository's URL: [https://github.com/Vikhyath-Reddy/waph-bheemrvy](https://github.com/Vikhyath-Reddy/waph-bheemrvy)
