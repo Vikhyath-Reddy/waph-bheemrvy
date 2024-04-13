@@ -19,7 +19,7 @@
 
 In this hackathon, the primary focus lies on addressing vulnerabilities like cross-site request forgery (CSRF) attacks, as well as implementing safeguards against cross-site scripting (XSS) within a vulnerable blog system application, which is prone to various web-based attacks. We perform both the hacker and the victim role in this to deeply understand the attack. in part 1 we attack both as victim and the hacker and in part 2 we comprehend the CSRF vulnerability and its protective measures.
 
-Link to Hackthon4 code : [https://github.com/Vikhyath-Reddy/waph-bheemrvy/tree/main/Hackthons/Hackthon4]([https://github.com/Vikhyath-Reddy/waph-bheemrvy/tree/main/Hackthons/Hackthon4])
+Link to Hackthon4 code : [https://github.com/Vikhyath-Reddy/waph-bheemrvy/tree/main/Hackthons/Hackthon4](https://github.com/Vikhyath-Reddy/waph-bheemrvy/tree/main/Hackthons/Hackthon4)
 
 ## Task 1: Attacks
 
@@ -54,7 +54,7 @@ Once the victim clicked on the comment shows a pop-up warning and then clicked o
 
 ![Attack](images/figure6.jpeg)
 
-Video Link: [https://youtu.be/Vv7Se631sos]([https://youtu.be/Vv7Se631sos])
+Video Link: [https://youtu.be/Vv7Se631sos](https://youtu.be/Vv7Se631sos)
 
 ## Task 2: Understanding the CSRF vulnerability and protection mechanism 
 
