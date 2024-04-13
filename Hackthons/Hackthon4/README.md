@@ -34,11 +34,11 @@ URL: https://waph-hackathon.eastus.cloudapp.azure.com/csrf/changepassword.php
 
 ### Step 2
 
-Created a page Myapp.html which directs to the changePassword page. And added a comment in the blog section of the page with phising code. Waits for user(Victim) ti click on the link in the comment section. Once clicked it redirects to change password screen and provide the attacher password mking victim unable to access the application.
+Created a page bheemrvy-csrf.html which directs to the changePassword page. And added a comment in the blog section of the page with phising code. Waits for user(Victim) ti click on the link in the comment section. Once clicked it redirects to change password screen and provide the attacher password mking victim unable to access the application.
 
 Comment: Hi From Vikhyath Reddy <a onclick="windows.location='http://localhost/Myapp.html'">click here for 100$ vocher.</a>
 
-![Myapp.html](images/figure1.jpeg) 
+![bheemrvy-csrf.html](images/figure1.jpeg) 
 
 ![Phising Comment](images/figure2.jpeg) 
 
