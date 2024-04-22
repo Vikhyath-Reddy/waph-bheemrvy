@@ -1,111 +1,126 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="design.css">
-    <title>User Details</title>
-</head>
-<body>
-<div class="headingsContainer">
-            <h3>User Details</h3>
-        </div>
-	<form>
 <?php
-	session_set_cookie_params(15*60,"/","Vikhyath.waph.io",TRUE,TRUE);
-	session_start();
-	if(isset($_POST["username"]) and isset($_POST['password']))
-	{
-		if(checklogin_mysql($_POST["username"],$_POST["password"]))
-		{
-			$_SESSION["authenticated"] = TRUE;
-			$_SESSION["username"] = $_POST["username"];
-			$_SESSION["name"] = $_POST["name"];
-			$_SESSION["browser"] = $_SERVER["HTTPS_USER_AGENT"];
-			?>
-			<div class="mainContainer">
-        	<h3>Welcome <?php echo htmlentities($_SESSION["username"]);?>!</h3>
-         	</div>
-			<?php
-			$mysqli = new mysqli('localhost','bheemrvy','Pa$$w0rd','waph');
-			if($mysqli->connect_errno)
-			{
-				printf("Database connection failed: %s\n", $mysqli->connect_error);
-				exit();
-			}
-
-			$sql = "SELECT * FROM users WHERE username=?;";
-			$stmt=$mysqli->prepare($sql);
-			$stmt->bind_param("s",$_POST["username"]);
-			$stmt->execute();
-			$result=$stmt->get_result();
-			if($result -> num_rows==1)
-				while ($row = mysqli_fetch_array($result)) 
-				{
-					?>
-					<div>
-						<p> <label> Name: </label><?php echo $row['name'];?></p>
-						<p> <label> Email: </label><?php echo $row['email'];?></p>
-						<p> <label> Username: </label><?php echo $row['username'];?></p>
-					</div>
-					<p class="register"><a href="changepasswordform.php">Change Password</a> </p>
-					<p class="register"><a href="editprofileform.php">Edit Profile</a></p> 
-					<p class="register"> <a href="logout.php">Logout</a></p>
-	
-					<?php
-				}
-			else
-				echo "<script>alert('Couldnt load user data');</script>";
-			
-		}
-		else
-		{
+$lifetime = 15 * 60;
+$path = "/";
+$domain = "192.167.9.255";
+$secure = TRUE;
+$httponly = TRUE;
+session_set_cookie_params($lifetime, $path, $domain, $secure, $httponly);
+session_start();
+if (isset($_POST["username"]) and isset($_POST["password"])) {
+		if (checklogin_mysql($_POST["username"],$_POST["password"])) {
+			$_SESSION['authenticated'] = TRUE;
+			$_SESSION['username'] = $_POST["username"];
+			$_SESSION['browser'] = $_SERVER["HTTP_USER_AGENT"];	
+		}else{
 			session_destroy();
-			echo "<script>alert('Invalid username/password');window.location='form.php';</script>";
+			echo "<script>alert('Invalid username/password');window.location='form2.php';</script>";
 			die();
 		}
 	}
-	if(!$_SESSION["authenticated"] or $_SESSION["authenticated"]!= TRUE)
-	{
+	if (!isset($_SESSION['authenticated']) or $_SESSION['authenticated']!= TRUE) {
 		session_destroy();
-		echo "<script>alert('You have not login. Please login first');</script>";
-		header("Refresh:0;url=form.php");
+		echo "<script>alert('You have not login. Please login first!');</script>";
+		header("Refresh: 0; url=form2.php");
+		die();
+	}
+        if($_SESSION["browser"] != $_SERVER["HTTP_USER_AGENT"]){
+		session_destroy();
+		echo "<script>alert('Session hijacking attack is detected!');</script>";
+		header("Refresh:0; url=from2.php");
 		die();
 	}
 
-	if($_SESSION["browser"]!=$_SERVER["HTTPS_USER_AGENT"])
-	{
-		session_destroy();
-		echo "<script>alert('Session hijacking is detected!');</script>";
-		header("Refresh:0; url=form.php");
-		die();
-	}
-	
-	function checklogin_mysql($username,$password)
-	{
-		$mysqli = new mysqli('localhost','bheemrvy','Pa$$w0rd','waph');
-		if($mysqli->connect_errno)
-		{
-			printf("Database connection failed: %s\n", $mysqli->connect_error);
-			exit();
-		}
+function checklogin_mysql($username, $password)
+{
+    $mysqli = new mysqli('localhost', 'waph_p2', 'password', 'waph_team18');
+    if ($mysqli->connect_errno) {
+        printf("Database connection failed: %s\n", $mysqli->connect_error);
+        exit();
+    }
+    $sql = "SELECT * FROM users WHERE username=? AND password = md5(?)";
+    $stmt = $mysqli->prepare($sql);
+    $stmt->bind_param("ss", $username, $password);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    if ($result->num_rows >= 1)
+        return TRUE;
+    return FALSE;
+}
 
-		$sql = "SELECT * FROM users WHERE username=? AND password=md5(?)";
-		//$sql = $sql . " AND password = md5('". $password."')";
-		//echo "DEBUG > sql= $sql";
-		$stmt=$mysqli->prepare($sql);
-		$stmt->bind_param("ss",$username,$password);
-		$stmt->execute();
-		$result=$stmt->get_result();
-		if($result -> num_rows==1)
-			return TRUE;
-		return FALSE;
-	}
-
-	
+function getPosts()
+{
+    $mysqli = new mysqli('localhost', 'waph_p2', 'password', 'waph_team18');
+    if ($mysqli->connect_errno) {
+        printf("Database connection failed: %s\n", $mysqli->connect_error);
+        exit();
+    }
+    $sql = "SELECT posts.post_id, profiles.name, posts.content, posts.timestamp 
+            FROM posts 
+            INNER JOIN profiles ON posts.user_id = profiles.user_id
+            ORDER BY posts.timestamp DESC";
+    $result = $mysqli->query($sql);
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            echo "<div class='post'>";
+            // echo "<h3>" . $row['post_id'] . "</h3>";
+            echo "<p>" . $row['content'] . "</p>";
+            echo "<p>Posted by : " . $row['name'] . "</p>";
+            echo "<p>Time: " . $row['timestamp'] . "</p>";
+            echo "</div>";
+        }
+    } else {
+        echo "<p>No posts found.</p>";
+    }
+}
 ?>
-	</form>
-    </div>
-   </body>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Individual Project 2</title>
+    <link rel="stylesheet" href="minifbstyle.css">
+    <style>
+        /* Interactive styles */
+        .user-info a {
+            color: #007bff; /* Blue link color */
+            text-decoration: none;
+            margin-right: 10px;
+            transition: color 0.3s; /* Smooth color transition */
+        }
+        .user-info a:hover {
+            color: #0056b3; /* Darker blue on hover */
+        }
+        .main-content h3 {
+            color: #007bff; /* Blue heading color */
+        }
+        .post {
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+        }
+        .post:hover {
+            background-color: #f9f9f9; /* Light gray background on hover */
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>Individual Project 2</h1>
+        <div class="user-info">
+            <h2>Welcome <?php echo htmlentities($_SESSION['username']); ?>!</h2>
+            <a href="logout.php">Logout</a>
+            <a href="editprofileform.php">Edit Profile</a>
+            <a href="changepasswordform.php">Change Password</a>
+            <a href="profile.php">Current Profile</a>
+        </div>
+    </header>
+    <section class="main-content">
+        <h3>Posts:</h3>
+        <?php getPosts(); ?>
+    </section>
+</div>
+</body>
 </html>
+

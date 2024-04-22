@@ -1,82 +1,59 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="design.css">
-    <title>User Details</title>
-</head>
-<body>
-<div class="headingsContainer">
-            <h3>Passsword Status</h3>
-        </div>
-	<form>
 <?php
-	require "session_auth.php";
-	$username = $_SESSION['username'];
-	$password = $_REQUEST["newpassword"];
-	$token=$_POST["nocsrftoken"];
-	if(!isset($token) or ($token!==$_SESSION["nocsrftoken"]))
-	{
-		echo "CSRF Attack is detected";
-		die();
-	}
-	if(isset($username) and isset($password))
-	{
-		
+	$username = $_POST["username"];
+	$password = $_POST["password"];
+	if (isset($username) and isset($password)){
+		//echo "Debug> changepassword.php got username=$username;password=$password";
 		if(changepassword($username,$password))
-		{
-            ?>
-            <div class="mainContainer">
-            <h2>Password has been changed!!! for <?php echo htmlentities($username);?>!</h2>
-
-			<p class="register"> <a href="logout.php">Logout</a></p>
-             </div>
-            <?php
-		}
-		else
-		{
-			?>
-            <div class="mainContainer">
-            <h2>Change password failed!!!! for <?php echo htmlentities($username);?>!</h2>
-            
-	<p class="register"> <a href="logout.php">Logout</a></p>
-             </div>
-            <?php
-		}
+	{
+		echo " Your password has been changed!";
 	}
 	else
 	{
-		?>
-            <div class="mainContainer">
-            <?php echo "No username/password provided!";?>!
-             </div>
-            <?php
-		
+		echo "Registration failed!";
+	}
+	}else {
+		echo "No username/password provided!";
 	}
 	
+	function changepassword($username, $password)
+{
+    $mysqli = new mysqli('localhost', 'waph_p2', 'password', 'waph_team18');
+    if ($mysqli->connect_errno) {
+        printf("Database connection failed: %s\n", $mysqli->connect_error);
+        return FALSE;
+    }
 
-	function changepassword($username,$password)
-	{
-		$mysqli = new mysqli('localhost','bopparsr','Shruti@123','waph');
-		if($mysqli->connect_errno)
-		{
-			printf("Database connection failed: %s\n", $mysqli->connect_error);
-			exit();
-		}
+    // Hash the password before updating
+    $hashed_password = md5($password);
 
-		$sql = "UPDATE users SET password=md5(?) WHERE username=?;";
-		$stmt=$mysqli->prepare($sql);
-		$stmt->bind_param("ss",$password,$username);
-		if($stmt->execute())
-			return TRUE;
-		return FALSE;
-	}
+    $prepared_sql = "UPDATE users SET password = ? WHERE username = ?;";
+    $stmt = $mysqli->prepare($prepared_sql);
+    // Binding parameters
+    $stmt->bind_param("ss", $hashed_password, $username);
+    $stmt->execute();
+    // Checking if the execution was successful
+    if ($mysqli->affected_rows == 1)
+        return TRUE;
+    return FALSE;
+}
+?>
 
-	$token.die();
-	?>
-	</form>
-    </div>
-   </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Change Password</title>
+    <link rel="stylesheet" href="minifbstyle.css">
+</head>
+<body>
+<div class="container">
+    <header>
+            <a href="index.php">Home Page</a>
+            <a href="logout.php">Logout</a>
+            <a href="changepasswordform.php">back</a>
+
+        </div>
+    </header>
+</div>
+</body>
 </html>

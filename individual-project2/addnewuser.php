@@ -1,102 +1,115 @@
-<!DOCTYPE html>
-<!-- Created By CodingNepal -->
-<html lang="en" dir="ltr">
-   <head>
-      <meta charset="utf-8">
-      <title>User Page </title>
-      <link rel="stylesheet" href="design.css">
-   </head>
-   <body>
-   <div class="wrapper">
 <?php
-	$username = $_POST["username"];
-	$password = $_POST["password"];
-	$email = $_POST["email"];
-	$name = $_POST["name"];
-	if(isset($username) and isset($password))
-	{
-		//echo "Debug> got username=$username;password=$password";
-		$username=sanitize_input($_POST['username']);
-		$password=sanitize_input($_POST['password']);
-		$email=sanitize_input($_POST['email']);
-		$name = sanitize_input($_POST['name']);
+    $username = $_POST["username"];
+    $password = $_POST["password"];
+    $name = $_POST["name"];
+    $additional_email = $_POST["additional_email"];
+    $email = $_POST["email"];
+    $phone = $_POST["phone"];
+    
+    // Validate email format
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        echo "Invalid email format!";
+        exit;
+    }
 
-		#input length check
-		if(strlen($username) < 1 || strlen($password) < 8 || strlen($email)< 3 || strlen($name)<1)
-		{
-			?>
-            <div class="title">
-            Invalid Length for username : <?php echo htmlentities($username);?>!
-             </div>
-            <?php
-		}
+    // Check if username or email is already registered
+    if (userExists($username)) {
+        echo "User already exists!";
+        exit;
+    }
+    
+    if (isset($username) && isset($password) && isset($name) && isset($additional_email) && isset($phone)) 
+    {
+        // Add user and fetch auto-generated user_id
+        $user_id = addNewUser($username, $password);
+        
+        if ($user_id !== false) {
+            if (addUserProfile($user_id, $name, $additional_email, $phone, $email)) {
+                echo "Registration succeeded!";
+            } else {
+                echo "Failed to add user profile!";
+            }
+        } else {
+            echo "Registration failed!";
+        }
+    } else {
+        echo "Incomplete data provided!";
+    }
+    
+    function addNewUser($username, $password) {
+        $mysqli = new mysqli('localhost', 'waph_p2', 'password', 'waph_team18');
+        if ($mysqli->connect_errno) {
+            printf("Database connection failed: %s\n", $mysqli->connect_error);
+            return false;
+        }
+        
+        $prepared_sql = "INSERT INTO users (username, password) VALUES (?, MD5(?))";
+        $stmt = $mysqli->prepare($prepared_sql);
+        if (!$stmt) {
+            printf("Prepare failed: %s\n", $mysqli->error);
+            return false;
+        }
+        
+        $stmt->bind_param("ss", $username, $password);
+        if (!$stmt->execute()) {
+            printf("Execute failed: %s\n", $stmt->error);
+            return false;
+        }
+        
+        $user_id = $mysqli->insert_id;
+        $stmt->close();
+        return $user_id;
+    }
+    
+    function addUserProfile($user_id, $name, $additional_email, $phone, $email) {
+        $mysqli = new mysqli('localhost', 'waph_p2', 'password', 'waph_team18');
+        if ($mysqli->connect_errno) {
+            printf("Database connection failed: %s\n", $mysqli->connect_error);
+            return false;
+        }
+        
+        $prepared_sql = "INSERT INTO profiles (user_id, name, additional_email, phone, email) VALUES (?, ?, ?, ?, ?)";
+        $stmt = $mysqli->prepare($prepared_sql);
+        if (!$stmt) {
+            printf("Prepare failed: %s\n", $mysqli->error);
+            return false;
+        }
+        
+        $stmt->bind_param("issss", $user_id, $name, $additional_email, $phone, $email);
+        if (!$stmt->execute()) {
+            printf("Execute failed: %s\n", $stmt->error);
+            return false;
+        }
+        
+        $stmt->close();
+        return true;
+    }
 
-		//Reg exp check
-		else if ((!preg_match("/\w+/", $username)) || (!preg_match("/\w+/", $name))||
-		(!preg_match("/^(?=.[a-z])(?=.[A-Z])(?=.[0-9])(?=.[!@#$%^&])[\w!@#$%^&]{8,}$/",$password)) || 
-		(!preg_match("/^[\w.-]+@[\w-]+(\.[\w-]+)*$/", $email ))) 
-		{
-			?>
-            <div class="title">
-            Invalid pattern matching for username : <?php echo htmlentities($username);?>!
-             </div>
-            <?php
-		}
+    function userExists($username) {
+    $mysqli = new mysqli('localhost', 'waph_p2', 'password', 'waph_team18');
+    if ($mysqli->connect_errno) {
+        printf("Database connection failed: %s\n", $mysqli->connect_error);
+        return true; // Prevent further processing if the database connection fails
+    }
 
-		else if(addnewuser($name, $email,$username,$password))
-		{
-            ?>
-            <div class="title">
-            Registration successfull!! <?php echo htmlentities($username);?>!
-             </div>
-            <?php
-		}
-		else
-		{
-            ?>
-            <div class="title">
-            Registration FAILED!! <?php echo htmlentities($username);?>!
-             </div>
-            <?php
-			
-		}
-	}
-	else
-	{
-        ?>
-            <div class="title">
-            No username/password provided!
-             </div>
-        <?php
-	}
-	
-	function sanitize_input($input)
-	{
-		$input=trim($input);
-		$input=stripslashes($input);
-		$input=htmlspecialchars($input);
-		return $input;
-	}
+    $sql = "SELECT 1 FROM users WHERE username = ?";
+    $stmt = $mysqli->prepare($sql);
+    if (!$stmt) {
+        printf("Prepare failed: %s\n", $mysqli->error);
+        return true; // Assume true to prevent duplicate entry
+    }
 
-	function addnewuser($name, $email,$username,$password)
-	{
-		$mysqli = new mysqli('localhost','bopparsr','Shruti@123','waph');
-		if($mysqli->connect_errno)
-		{
-			printf("Database connection failed: %s\n", $mysqli->connect_error);
-			exit();
-		}
+    $stmt->bind_param("s", $username);
+    if (!$stmt->execute()) {
+        printf("Execute failed: %s\n", $stmt->error);
+        $stmt->close();
+        return true; // Assume true to prevent duplicate entry
+    }
 
-		$sql = "INSERT INTO users(name, email,username,password) VALUES (?,?,?, md5(?));";
-		//$sql = $sql . " AND password = md5('". $password."')";
-		//echo "DEBUG > sql= $sql";
-		$stmt=$mysqli->prepare($sql);
-		$stmt->bind_param("ssss",$name, $email,$username,$password);
-		if($stmt->execute())
-			return TRUE;
-		return FALSE;
-	}
+    $result = $stmt->get_result();
+    $exists = $result->num_rows > 0;
+    $stmt->close();
+    return $exists;
+}
+
 ?>
-</div>
-   </body>
-</html>s

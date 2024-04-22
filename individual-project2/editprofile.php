@@ -1,87 +1,63 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="design.css">
-    <title>User Details</title>
-</head>
-<body>
-<div class="headingsContainer">
-            <h3>Passsword Status</h3>
-        </div>
-	<form>
 <?php
-	require "session_auth.php";
-	$username = $_SESSION['username'];
-	$name = $_REQUEST["newname"];
-   $email = $_REQUEST["newemail"];
-	$token=$_POST["nocsrftoken"];
-	if(!isset($token) or ($token!==$_SESSION["nocsrftoken"]))
-	{
-		?>
-            <div class="mainContainer">
-            <h2>CSRF Attack is detected!!! for <?php echo htmlentities($username);?>!</h2>
-             </div>
-            <?php
-		die();
-	}
-	if(isset($username) and isset($name) and isset($email))
-	{
-		
-		if(changeprofile($username,$name,$email))
-		{
-            ?>
-            <div class="mainContainer">
-            Profile has been updated!!! for <?php echo htmlentities($username);?>!
-             </div>
-             <p class="register"> <a href="logout.php">Logout</a></p>
-            <?php
-		}
-		else
-		{
-			?>
-            <div class="mainContainer">
-            Profile Update failed!!!! for <?php echo htmlentities($username);?>!
-             </div>
-             <p class="register"> <a href="logout.php">Logout</a></p>
-            <?php
-		}
-	}
-	else
-	{
-		?>
-            <div class="mainContainer">
-            <?php echo "No name/email provided!";?>!
-             </div>
-             <p class="register"> <a href="logout.php">Logout</a></p>
-            <?php
-		
-	}
-	
 
-	function changeprofile($username,$name, $email)
-	{
-		$mysqli = new mysqli('localhost','bopparsr','Shruti@123','waph');
-		if($mysqli->connect_errno)
-		{
-			printf("Database connection failed: %s\n", $mysqli->connect_error);
-			exit();
-		}
 
-		$sql = "UPDATE users SET name=str(?), email=? WHERE username=?;";
-		$stmt=$mysqli->prepare($sql);
-		$stmt->bind_param("sss",$name,$email,$username);
-		if($stmt->execute())
-			return TRUE;
-		return FALSE;
-	}
 
-	$token.die();
-	?>
-	
-	</form>
-    </div>
-   </body>
-</html>
+$username = $_POST["username"];
+$name = $_POST["name"];
+$additional_email = $_POST["additional_email"];
+$phone = $_POST["phone"];
+
+// Check if the form is submitted
+if (isset($username) && isset($name) && isset($additional_email) && isset($phone)) {
+    if (updateProfile($username, $name, $additional_email, $phone)) {
+        echo "Profile updated successfully!";
+    } else {
+        echo "Failed to update profile!";
+    }
+} else {
+    echo "Invalid data provided!";
+}
+
+function updateProfile($username, $name, $additional_email, $phone)
+{
+    // Assuming you have already established a database connection
+
+    
+// Assuming you have already established a database connection
+ $mysqli = new mysqli('localhost', 'waph_p2', 'Pa$$w0rd', 'waph_team18');
+    if ($mysqli->connect_errno) {
+        printf("Database connection failed: %s\n", $mysqli->connect_error);
+        return FALSE;
+    }
+    // Retrieve the user's ID based on the username
+    $query = "SELECT user_id FROM users WHERE username = ?";
+    $stmt = $mysqli->prepare($query);
+    $stmt->bind_param("s", $username);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows == 0) {
+        echo "Error: User not found!";
+        return false;
+    }
+
+    $row = $result->fetch_assoc();
+    $user_id = $row['user_id'];
+
+    // Update the profile information in the database
+    $query = "UPDATE profiles SET name = ?, additional_email = ?, phone = ? WHERE user_id = ?";
+    $stmt = $mysqli->prepare($query);
+    $stmt->bind_param("sssi", $name, $additional_email, $phone, $user_id);
+    $stmt->execute();
+
+    // Check if the update was successful
+    if ($stmt->affected_rows == 1) {
+        echo "Profile updated successfully!";
+        return true;
+    } else {
+        echo "Failed to update profile!";
+        return false;
+    }
+}
+
+?>

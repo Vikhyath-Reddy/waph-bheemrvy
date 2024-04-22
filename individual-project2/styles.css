@@ -1,0 +1,92 @@
+/* Global settings */
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    padding: 20px;
+    background-color: #f0f2f5; /* Light gray background */
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    color: #1c1e21; /* Primary text color */
+    overflow: hidden; /* Prevents scrolling */
+}
+
+/* Style for form containers */
+form {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 100%;
+    max-width: 360px; /* More mobile-friendly width */
+    position: relative; /* Changed from absolute for flex container */
+    box-sizing: border-box;
+}
+
+/* Input fields styling */
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="tel"] {
+    width: 100%; /* Full width of parent minus padding */
+    padding: 12px;
+    margin-top: 8px;
+    border: 2px solid #dddfe2; /* Solid border for better visibility */
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+/* Styling for labels */
+label {
+    font-weight: 600; /* Using numeric weight for consistency */
+    margin-bottom: 4px; /* More specific spacing */
+}
+
+/* Button styles */
+button {
+    width: 100%; /* Full width for easier mobile use */
+    padding: 12px;
+    background-color: #1877f2; /* Vibrant Facebook blue */
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 18px; /* Slightly reduced font size for aesthetics */
+}
+
+button:hover {
+    background-color: #165cbb; /* Consistent dark blue for hover state */
+}
+
+/* Error message styles */
+.error {
+    color: #d9534f; /* Bootstrap-like red for errors */
+    margin-top: 8px; /* Consistent spacing */
+}
+
+/* Additional styles for links */
+a {
+    color: #1877f2; /* Harmonized blue */
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Fixed elements styling */
+.last-visited {
+    position: fixed;
+    bottom: 10px; /* A little padding from the bottom */
+    width: 100%;
+    text-align: center;
+}
+
+#digit-clock {
+    position: fixed;
+    top: 10px; /* A little padding from the top */
+    width: 100%;
+    text-align: center;
+}
+
