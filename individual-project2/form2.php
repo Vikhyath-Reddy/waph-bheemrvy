@@ -12,44 +12,52 @@
   <link rel="stylesheet" href="minifbstyle.css">
   <style>
     .container {
-      background-color: #f2f2f2; /* Light gray background */
-      padding: 20px;
-      border-radius: 10px;
-      margin: 20px auto;
-      width: 400px; /* Adjust width as needed */
-    }
-    .header {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    .header h1 {
-      color: #ff0000; /* Red text color */
-    }
-    .form-group label {
-      color: #ff0000; /* Red label color */
-    }
-    .btn-primary {
-      background-color: #ff0000; /* Red button background */
-      color: #fff; /* White button text color */
-      border: none;
-      padding: 10px 20px;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    .btn-primary:hover {
-      background-color: #cc0000; /* Darker red on hover */
-    }
-    .btn-secondary {
-      background-color: #333; /* Dark gray button background */
-      color: #fff; /* White button text color */
-      border: none;
-      padding: 10px 20px;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    .btn-secondary:hover {
-      background-color: #555; /* Darker gray on hover */
-    }
+    background-color: #e6e6e6; /* Light gray background */
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px auto;
+    width: 400px; /* Adjust width as needed */
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.header h1 {
+    color: #4b0082; /* Indigo text color */
+}
+
+.form-group label {
+    color: #4b0082; /* Indigo label color */
+}
+
+.btn-primary {
+    background-color: #4b0082; /* Indigo button background */
+    color: #fff; /* White button text color */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background-color: #2e0854; /* Darker indigo on hover */
+}
+
+.btn-secondary {
+    background-color: #2f4f4f; /* Dark slate gray button background */
+    color: #fff; /* White button text color */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-secondary:hover {
+    background-color: #1e1e1e; /* Darker slate gray on hover */
+}
+
   </style>
 </head>
 <body>

@@ -4,79 +4,77 @@
   <meta charset="utf-8">
   <title>Sign Up</title>
     <style>
-    body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Updated font for a modern look */
-    background-color: #e9ecef; /* Lighter gray background for a softer appearance */
-    color: #343a40; /* Slightly darker text color for better readability */
+   body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Keeping the font family */
+    background-color: #f8f9fa; /* Soft blue-gray background */
+    color: #495057; /* Slightly darker text color for better contrast */
     margin: 0;
     padding: 0;
 }
 
 h1 {
     text-align: center;
-    color: #17a2b8; /* Changed to a teal color for a different theme */
-    font-size: 28px; /* Increased size for better visibility */
-    margin-top: 20px; /* Added margin to give space from the top */
-    padding-bottom: 10px; /* Padding for aesthetic spacing */
+    color: #007bff; /* Deep blue for headings */
+    font-size: 32px; /* Slightly larger font size for emphasis */
+    margin-top: 30px; /* Increased margin for more spacing from the top */
+    padding-bottom: 15px; /* Adjusted padding for spacing */
 }
 
 #digit-clock {
     text-align: center;
-    font-size: 18px; /* Larger font size for better readability */
-    margin-bottom: 30px; /* Increased margin for better visual separation */
+    font-size: 20px; /* Increased font size for better visibility */
+    margin-bottom: 25px; /* Adjusted margin for better separation */
     color: #6c757d; /* Dim gray for subtlety */
 }
 
 .form {
-    max-width: 420px; /* Slightly larger form width */
-    margin: 30px auto; /* Increased margin for more spacing */
-    background: #ffffff;
-    padding: 25px; /* More padding for better form field spacing */
-    border-radius: 8px; /* Slightly larger radius for smoother corners */
-    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1); /* Softer shadow for subtle depth */
+    max-width: 400px; /* Slightly wider form container */
+    margin: 40px auto; /* Adjusted margin for better centering */
+    background: #fff; /* White background */
+    padding: 30px; /* Increased padding for better form field spacing */
+    border-radius: 10px; /* Slightly larger border radius */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Soft shadow effect */
 }
 
 .text_field {
     width: 100%;
-    padding: 12px; /* More padding for better text input area */
-    margin-bottom: 12px; /* Uniform margin for consistency */
-    border: 2px solid #dee2e6; /* Thicker border in a lighter shade */
-    border-radius: 8px; /* Uniform radius with the form */
+    padding: 14px; /* Increased padding for text input area */
+    margin-bottom: 20px; /* Adjusted margin for better spacing */
+    border: 2px solid #ced4da; /* Lighter border color */
+    border-radius: 8px; /* Slightly larger border radius */
     box-sizing: border-box;
-    font-size: 16px; /* Larger font size for ease of reading */
+    font-size: 18px; /* Larger font size for improved readability */
 }
 
 .button {
     width: 100%;
-    padding: 12px; /* Increased padding for a better click area */
-    background-color: #28a745; /* Green color for a positive, noticeable button */
+    padding: 14px; /* Increased padding for better click area */
+    background-color: #28a745; /* Green color for buttons */
     color: #fff;
     border: none;
-    border-radius: 8px; /* Matching the border-radius of inputs and form */
+    border-radius: 8px;
     cursor: pointer;
-    font-weight: bold; /* Bolder font for emphasis */
+    font-weight: bold;
 }
 
 .button:hover {
-    background-color: #218838; /* Darker green for hover state */
+    background-color: #218838; /* Darker green on hover */
 }
 
 .home-link {
     display: block;
     text-align: center;
-    margin-top: 20px;
-    margin-bottom: 20px; /* Added bottom margin for spacing */
+    margin-top: 30px; /* Increased top margin for better spacing */
     text-decoration: none;
-    color: #17a2b8; /* Matching the H1 color for theme consistency */
-    font-size: 16px; /* Increased font size for better readability */
+    color: #007bff; /* Deep blue color */
+    font-size: 18px; /* Larger font size for improved readability */
 }
 
 .home-link:hover {
     text-decoration: underline;
-    color: #138496; /* A darker shade of teal for hover */
+    color: #0056b3; /* Darker blue on hover */
 }
 
-        }
   </style>
   <script>
     function validateForm() {
